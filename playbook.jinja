@@ -1,0 +1,7 @@
+---
+  - hosts: {{ hst }}
+    connection: local
+    roles:
+{% for r in roles %}
+      - {{ r }}
+{% endfor %}
