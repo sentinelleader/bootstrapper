@@ -21,11 +21,17 @@ API accepts the ansible job via the Flask API and queues the job on Redis queue 
     Method: `POST`
     Mandatory POST Params: `host,role,env`
 
-
   * Endpoint: `/ansible/results/<job_key>`
     Method: `GET`
     Mandatory GET Params: `job_id`
 
+  * Endpoint: `/ansible/adhoc/`
+    Method: `GET`
+    Mandatory GET Params: `host/pattern,mod,arg`
+
+  * Endpoint: `/ansible/adhoc/job/`
+    Method: `GET`
+    Mandatory GET Params: `host/pattern,mod,arg`
 
 TODO
 ====

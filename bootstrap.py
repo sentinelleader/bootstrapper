@@ -58,6 +58,16 @@ def ansble_run(ans_inst_ip, ans_inst_role, ans_env, ans_user, ans_key_file):
 		 ).run()
   return run_pbook
 
+def ansble_adhoc_run(ans_mod, ans_host, ans_user, ans_key_file, module_args):
+  run_adhoc = ansible.runner.Runner(
+                 module_name=ans_mod,
+                 module_args=module_args,
+                 pattern=ans_host,
+                 remote_user=ans_user,
+                 private_key_file=ans_key_file,
+                 ).run()
+  return run_adhoc
+
 @app.route('/ansible/role/', methods=['POST'])
 def role():
   inst_ip = request.form['host']
@@ -69,6 +79,43 @@ def role():
             func=ansble_run, args=(inst_ip, inst_role, env, ans_remote_user, ans_private_key,), result_ttl=5000, timeout=2000
         )
   return job.get_id()
+
+@app.route('/ansible/adhoc/job/', methods=['GET'])
+def adhoc_job():
+  mod = request.args['mod']
+  print mod
+  host = request.args['host']
+  mod_args = request.args.get("args")
+  print mod_args
+  ans_remote_user = "root"
+  ans_private_key = "/root/.ssh/id_rsa"
+  if mod_args is None:
+    print "inside"
+    mod_args = ''
+  print mod_args
+  print "%s %s %s" % (mod, host, mod_args)
+  job = q.enqueue_call(
+            func=ansble_adhoc_run, args=(mod, host, ans_remote_user, ans_private_key, mod_args,), result_ttl=5000, timeout=6000
+        )
+  return job.get_id()
+
+@app.route('/ansible/adhoc/', methods=['GET'])
+def adhoc():
+  mod = request.args['mod']
+  print mod
+  host = request.args['host']
+  mod_args = request.args.get("args")
+  print mod_args
+  ans_remote_user = "root"
+  ans_private_key = "/root/.ssh/id_rsa"
+  if mod_args is None:
+    print "inside"
+    mod_args = ''
+  print mod_args
+  print "%s %s %s" % (mod, host, mod_args)
+  ret = ansble_adhoc_run(mod, host, ans_remote_user, ans_private_key, mod_args)
+  print ret
+  return json.dumps(ret), 200
 
 @app.route("/ansible/results/<job_key>", methods=['GET'])
 def get_results(job_key):
