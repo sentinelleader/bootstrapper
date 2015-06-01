@@ -63,41 +63,41 @@ Pip install below packages
 
 ###Available API Endpoints
 
-  * Endpoint: `/ansible/roles/`
-    Method: `POST`
-    Mandatory POST Params: `host,role,env`
+  * Endpoint: `/ansible/roles/` 
+    Method: `POST` 
+    Mandatory POST Params: `host,role,env` 
 
-  * Endpoint: `/ansible/adhoc/`
-    Method: `GET`
-    Mandatory GET Params: `host/pattern,mod,arg`
+  * Endpoint: `/ansible/adhoc/` 
+    Method: `GET` 
+    Mandatory GET Params: `host/pattern,mod,arg` 
 
-  * Endpoint: `/ansible/adhoc/job/`
-    Method: `GET`
-    Mandatory GET Params: `host/pattern,mod,arg`
+  * Endpoint: `/ansible/adhoc/job/` 
+    Method: `GET` 
+    Mandatory GET Params: `host/pattern,mod,arg` 
 
-  * Endpoint: `/ansible/results/<job_key>`
-    Method: `GET`
-    Mandatory GET Params: `job_id`
+  * Endpoint: `/ansible/results/<job_key>` 
+    Method: `GET` 
+    Mandatory GET Params: `job_id` 
 
-  * Endpoint: `/ansible/ec2list`
-    Method: `GET`
-    Mandatory GET Params: `pattern`
+  * Endpoint: `/ansible/ec2list` 
+    Method: `GET` 
+    Mandatory GET Params: `pattern` 
 
-  * Endpoint: `/ansible/ec2launch/`
-    Method: `POST`
-    Mandatory POST Params: `instance_type, env, role, ip, public(boolean)`
+  * Endpoint: `/ansible/ec2launch/` 
+    Method: `POST` 
+    Mandatory POST Params: `instance_type, env, role, ip, public(boolean)` 
 
-  * Endpoint: `/ansible/set_eip/`
-    Method: `POST`
-    Mandatory POST Params: `instance_id, env, role`
+  * Endpoint: `/ansible/set_eip/` 
+    Method: `POST` 
+    Mandatory POST Params: `instance_id, env, role` 
 
-  * Endpoint: `/ansible/create_lc/`
-    Method: `POST`
-    Mandatory POST Params: `instance_type, image_id, env, role`
+  * Endpoint: `/ansible/create_lc/` 
+    Method: `POST` 
+    Mandatory POST Params: `instance_type, image_id, env, role` 
 
-  * Endpoint: `/ansible/list_lc/`
-    Method: `GET`
-    Mandatory GET Params: `env`
+  * Endpoint: `/ansible/list_lc/` 
+    Method: `GET` 
+    Mandatory GET Params: `env` 
 
 ###EIP Mapping
 
