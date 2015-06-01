@@ -1,0 +1,9 @@
+---
+  - hosts: {{ hst }}
+    vars_files:
+      - <your_var_files_if_any_goes_here>
+    sudo: yes
+    roles:
+{% for r in roles %}
+      - <path_to_your_roles_folder>{{ r }}
+{% endfor %}

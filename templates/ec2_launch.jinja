@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  vars_files:
+    - <your_var_files_if_any_goes_here>
+  tasks:
+    - name: launchng EC2 instance
+      ec2:
+        region: "{{ ec2_region }}"
+        ec2_access_key: "{{ ec2_access_key }}"
+        ec2_secret_key: "{{ ec2_secret_key }}"
+        keypair: "{{ ec2_keypair }}"
+        instance_type: "launch_instance_type"
+        image: "{{ base_ami_id }}"
+        vpc_subnet_id: "ec2_vpc_subnet"
+        wait: true
+        instance_tags:
+          Name: "{{environ + '_vpc_ans_launch_role'}}"
+          Env: "{{environ}}"
+          Role: "ans_launch_role"
+        group: ['sg_vpc_internal_ssh', 'sg_vpc_ans_launch_role']
+        private_ip: "{{ vpc_cidr_base }}.inst_ip"
+        assign_public_ip: inst_public_ip
+      register: ec2

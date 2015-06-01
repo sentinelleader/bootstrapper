@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  vars_files:
+    - <your_var_files_if_any_goes_here>
+  tasks:
+    - name: adding EIP to the instance
+      ec2_eip:
+        ip: "inst_eip"
+        instance_id: "instid"
+        region: "amz_ec2_rgn"

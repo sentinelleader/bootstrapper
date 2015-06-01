@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  vars_files:
+    - <your_var_files_if_any_goes_here>
+  tasks:
+    - name: create launch config
+      ec2_lc:
+        name: "app_name"
+        image_id: "ami"
+        key_name: "keyname"
+        region: "aws_regn"
+        security_groups: "sec_group"
+        instance_type: "instance_size"
+        user_data: |
+             "udata"
+        assign_public_ip: "inst_public_ip"

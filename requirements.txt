@@ -1,2 +1,4 @@
 redis
 rq
+flask
+ansible
