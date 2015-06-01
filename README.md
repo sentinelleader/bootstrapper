@@ -12,7 +12,7 @@
 
 ## Overview
 
-`Bootstrapper` provides an higher level API over ansible and exposes a REST API to perform various Ansible operations. `Bootstrapper` assumes that there are two Environments exists in your Infrastructure, ***DEV*** and ***PROD***. It assumes that all the machines of a particular environment exists only in a particular region (No corss region existance for now).
+`Bootstrapper` provides an higher level API over ansible and exposes a REST API to perform various Ansible operations. `Bootstrapper` assumes that there are two Environments exists in your Infrastructure, ***DEV*** and ***PROD***. It assumes that all the machines of a particular environment exists only in a particular region (No corss region existance for now). There is also a CLI tool bootstrapper called [bootstrappercli](https://github.com/sentinelleader/bootstrappercli)
 
 #Tool-Description
 
